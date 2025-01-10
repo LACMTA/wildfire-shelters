@@ -1,7 +1,7 @@
 const axios = require('axios');
-const cheerio = require('cheerio');
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
+const OUTPUT_FILE = 'docs/shelters.json';
 
 const TARGET_PAGES = [
     'https://www.fire.ca.gov/incidents/2025/1/7/palisades-fire'
@@ -108,7 +108,7 @@ async function getData(url) {
 
 function writeDataToFile(data) {
     const jsonData = JSON.stringify(data, null, 2);
-    fs.writeFile('shelters.json', jsonData, 'utf8', (err) => {
+    fs.writeFile(OUTPUT_FILE, jsonData, 'utf8', (err) => {
         if (err) {
             console.error('Error writing to file:', err);
         } else {
