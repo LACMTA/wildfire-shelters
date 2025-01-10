@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Calvary Community Church",
+    "address": "5495 Via Rocas",
+    "city": "Westlake Village",
+    "state": "CA",
+    "zip": "91362",
+    "lat": 34.153151165913286,
+    "lng": -118.80592806726938
+  },
+  {
+    "name": "El Camino Real Charter High School",
+    "address": "5440 Valley Circle Boulevard",
+    "city": "Woodland Hills",
+    "state": "CA",
+    "zip": "91367",
+    "lat": 34.16976277603261,
+    "lng": -118.64370434385515
+  },
+  {
+    "name": "Pasadena Convention Center",
+    "address": "300 E Green Street",
+    "city": "Pasadena",
+    "state": "CA",
+    "zip": "91101",
+    "lat": 34.144062,
+    "lng": -118.14339729472164
+  },
+  {
+    "name": "Stoner Recreation Center",
+    "address": "1835 Stoner Ave",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zip": "90025",
+    "lat": 34.03882895918367,
+    "lng": -118.45336159183672
+  },
+  {
+    "name": "Westwood Recreation Center",
+    "address": "1350 South Sepulveda Boulevard",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zip": "90025",
+    "lat": 34.05323525,
+    "lng": -118.44807798641105
+  },
+  {
+    "name": "Ritchie Valens Recreation Center",
+    "address": "10736 Laurel Canyon Boulevard",
+    "city": "Pacoima",
+    "state": "CA",
+    "zip": "91331",
+    "lat": 34.26539340816326,
+    "lng": -118.43898679591837
+  },
+  {
+    "name": "Pan Pacific Recreation Center",
+    "address": "7600 Beverly Boulevard",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zip": "90036",
+    "lat": 34.076049,
+    "lng": -118.355142
+  },
+  {
+    "name": "Pomona Fairplex (Gate 3)",
+    "address": "601 W McKinley Ave",
+    "city": "Pomona",
+    "state": "CA",
+    "zip": "91768",
+    "lat": 34.07962055,
+    "lng": -117.76269431932772
+  }
+]
