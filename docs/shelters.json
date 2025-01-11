@@ -2,9 +2,11 @@
   {
     "name": "Lanark Recreation Center",
     "address": "21816 Lanark St",
-    "city": "Conoga Oark",
+    "city": "Canoga Park",
     "state": "CA",
-    "zip": "91304"
+    "zip": "91304",
+    "lat": 34.217489275167786,
+    "lng": -118.60331159731544
   },
   {
     "name": "Van Nuys Recreation Center",
