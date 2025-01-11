@@ -1,5 +1,21 @@
 [
   {
+    "name": "Lanark Recreation Center",
+    "address": "21816 Lanark St",
+    "city": "Conoga Oark",
+    "state": "CA",
+    "zip": "91304"
+  },
+  {
+    "name": "Van Nuys Recreation Center",
+    "address": "14301 Vanowen St",
+    "city": "Van Nuys",
+    "state": "CA",
+    "zip": "91405",
+    "lat": 34.194011,
+    "lng": -118.444502
+  },
+  {
     "name": "Calvary Community Church",
     "address": "5495 Via Rocas",
     "city": "Westlake Village",
