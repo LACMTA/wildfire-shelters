@@ -9,13 +9,22 @@
     "lng": -118.80592806726938
   },
   {
-    "name": "El Camino Real Charter High School",
+    "name": "El Camino Real Charter High School -(Relocated to Ritchie Valens Recreation Center below)",
     "address": "5440 Valley Circle Boulevard",
     "city": "Woodland Hills",
     "state": "CA",
     "zip": "91367",
     "lat": 34.16976277603261,
     "lng": -118.64370434385515
+  },
+  {
+    "name": "Ritchie Valens Recreation Center",
+    "address": "10736 Laurel Canyon Boulevard",
+    "city": "Pacoima",
+    "state": "CA",
+    "zip": "91331",
+    "lat": 34.26539340816326,
+    "lng": -118.43898679591837
   },
   {
     "name": "Pasadena Convention Center",
@@ -43,15 +52,6 @@
     "zip": "90025",
     "lat": 34.05323525,
     "lng": -118.44807798641105
-  },
-  {
-    "name": "Ritchie Valens Recreation Center",
-    "address": "10736 Laurel Canyon Boulevard",
-    "city": "Pacoima",
-    "state": "CA",
-    "zip": "91331",
-    "lat": 34.26539340816326,
-    "lng": -118.43898679591837
   },
   {
     "name": "Pan Pacific Recreation Center",
