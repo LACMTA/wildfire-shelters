@@ -9,15 +9,6 @@
     "lng": -118.60331159731544
   },
   {
-    "name": "Van Nuys Recreation Center",
-    "address": "14301 Vanowen St",
-    "city": "Van Nuys",
-    "state": "CA",
-    "zip": "91405",
-    "lat": 34.194011,
-    "lng": -118.444502
-  },
-  {
     "name": "Calvary Community Church",
     "address": "5495 Via Rocas",
     "city": "Westlake Village",
@@ -88,5 +79,14 @@
     "zip": "91768",
     "lat": 34.07962055,
     "lng": -117.76269431932772
+  },
+  {
+    "name": "Van Nuys/Sherman Oaks Recreation Center",
+    "address": "14201 Huston St.",
+    "city": "Sherman Oaks",
+    "state": "CA",
+    "zip": "91423",
+    "lat": 34.159501,
+    "lng": -118.442297
   }
 ]
