@@ -1,14 +1,5 @@
 [
   {
-    "name": "Lanark Recreation Center",
-    "address": "21816 Lanark St",
-    "city": "Canoga Park",
-    "state": "CA",
-    "zip": "91304",
-    "lat": 34.217489275167786,
-    "lng": -118.60331159731544
-  },
-  {
     "name": "Calvary Community Church",
     "address": "5495 Via Rocas",
     "city": "Westlake Village",
@@ -16,15 +7,6 @@
     "zip": "91362",
     "lat": 34.153151165913286,
     "lng": -118.80592806726938
-  },
-  {
-    "name": "El Camino Real Charter High School (Relocated to Ritchie Valens Recreation Center below)",
-    "address": "5440 Valley Circle Boulevard",
-    "city": "Woodland Hills",
-    "state": "CA",
-    "zip": "91367",
-    "lat": 34.16976277603261,
-    "lng": -118.64370434385515
   },
   {
     "name": "Ritchie Valens Recreation Center",
@@ -76,17 +58,8 @@
     "address": "601 W McKinley Ave",
     "city": "Pomona",
     "state": "CA",
-    "zip": "91768",
+    "zip": "9176*",
     "lat": 34.07962055,
     "lng": -117.76269431932772
-  },
-  {
-    "name": "Van Nuys/Sherman Oaks Recreation Center",
-    "address": "14201 Huston St.",
-    "city": "Sherman Oaks",
-    "state": "CA",
-    "zip": "91423",
-    "lat": 34.159501,
-    "lng": -118.442297
   }
 ]
