@@ -36,15 +36,6 @@
     "lng": -118.44807798641105
   },
   {
-    "name": "Pan Pacific Recreation Center",
-    "address": "7600 Beverly Boulevard",
-    "city": "Los Angeles",
-    "state": "CA",
-    "zip": "90036",
-    "lat": 34.076049,
-    "lng": -118.355142
-  },
-  {
     "name": "Pomona Fairplex (Gate 3)",
     "address": "601 W McKinley Ave",
     "city": "Pomona",
@@ -55,7 +46,7 @@
   },
   {
     "name": "Van Nuys/Sherman Oaks Recreation Center",
-    "address": "14201 Huston St.",
+    "address": "14201 Huston Street",
     "city": "Sherman Oaks",
     "state": "CA",
     "zip": "91423",
