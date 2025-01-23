@@ -4,7 +4,14 @@ const { JSDOM } = require('jsdom');
 const OUTPUT_FILE = 'docs/shelters.json';
 
 const TARGET_PAGES = [
-    'https://www.fire.ca.gov/incidents/2025/1/7/palisades-fire'
+    {
+        name: 'palisades-fire',
+        url: 'https://www.fire.ca.gov/incidents/2025/1/7/palisades-fire'
+    },
+    {
+        name: 'hughes-fire',
+        url: 'https://www.fire.ca.gov/incidents/2025/1/22/hughes-fire'
+    }
 ];
 
 let resultsJSON = [];
@@ -31,9 +38,9 @@ async function geocodeAddress(address) {
     }
 }
 
-async function getData(url) {
+async function getData(page) {
     try {
-        const response = await axios.get(url);
+        const response = await axios.get(page.url);
         const html = response.data;
         const dom = new JSDOM(html);
         const doc = dom.window.document;
@@ -41,7 +48,7 @@ async function getData(url) {
         const evacuationSheltersH3 = Array.from(doc.querySelectorAll('h3')).find(
             (h3) => h3.textContent.trim() === "Evacuation Shelters"
         );
-        console.log(evacuationSheltersH3.textContent);
+        console.log(`${page.name} ${evacuationSheltersH3.textContent}`);
 
         if (!evacuationSheltersH3) {
             console.log("No evacuation shelters section found.");
@@ -51,55 +58,93 @@ async function getData(url) {
         let sibling = evacuationSheltersH3.nextElementSibling;
         const sheltersData = [];
 
-        while (sibling && sibling.tagName === 'P') {
-            let shelter = {};
-            let lineCount = 1;
-
-            sibling.childNodes.forEach((node) => {
-                if (node.tagName == 'BR') {
-                    return;
+        // multiline format
+        if (sibling.tagName === 'P') {
+            while (sibling) {
+                let shelter = {};
+                let lineCount = 1;
+    
+                sibling.childNodes.forEach((node) => {
+                    if (node.tagName == 'BR') {
+                        return;
+                    }
+    
+                    let text = '';
+    
+                    switch (lineCount) {
+                        case 1:
+                            text = node.textContent.trim();
+                            shelter.name = text;
+                            console.log(`Processing ${shelter.name}`);
+                            break;
+                        case 2:
+                            text = node.textContent.trim();
+                            shelter.address = text;
+                            break;
+                        case 3:
+                            text = node.textContent.trim();
+                            splitcityStateZip = text.split(',');
+                            shelter.city = splitcityStateZip[0].trim();
+                            shelter.state = splitcityStateZip[1].trim().split(' ')[0];
+                            shelter.zip = splitcityStateZip[1].trim().split(' ')[1];
+                            break;
+                        default:
+                            break;
+                    }
+    
+                    lineCount++;
+                });
+    
+                let addressString = `${shelter.address}, ${shelter.city}, ${shelter.state} ${shelter.zip}`;
+    
+                const coords = await geocodeAddress(addressString);
+                
+                if (coords) {
+                    shelter.lat = coords.lat;
+                    shelter.lng = coords.lng;
+    
+                    console.log(`Geocoded ${shelter.name}: ${coords.lat}, ${coords.lng}`);
                 }
+    
+                sheltersData.push(shelter);
+    
+                sibling = sibling.nextElementSibling; // Move to the next sibling
+            }
+        } else if (sibling.tagName === 'UL') {
+            // singleline format
+            const shelters = Array.from(sibling.querySelectorAll('li'));
 
-                let text = '';
+            await shelters.forEach(async (shelterObj) => {
+                let shelterText = shelterObj.textContent;
+                console.log(`Processing ${shelterText}`);
+                let shelter = {};
+                
+                let name = shelterText.split('(')[0].trim();
+                let address = shelterText.split('(')[1].split(')')[0].trim();
+                let splitcityStateZip = address.split(',');
 
-                switch (lineCount) {
-                    case 1:
-                        text = node.textContent.trim();
-                        shelter.name = text;
-                        break;
-                    case 2:
-                        text = node.textContent.trim();
-                        shelter.address = text;
-                        break;
-                    case 3:
-                        text = node.textContent.trim();
-                        splitcityStateZip = text.split(',');
-                        shelter.city = splitcityStateZip[0].trim();
-                        shelter.state = splitcityStateZip[1].trim().split(' ')[0];
-                        shelter.zip = splitcityStateZip[1].trim().split(' ')[1];
-                        break;
-                    default:
-                        break;
+                shelter.name = name;
+                shelter.address = splitcityStateZip[0].trim();
+                shelter.city = splitcityStateZip[1].trim();
+                shelter.state = splitcityStateZip[2].trim().split(' ')[0];
+                shelter.zip = splitcityStateZip[2].trim().split(' ')[1];
+
+                let addressString = `${shelter.address}, ${shelter.city}, ${shelter.state} ${shelter.zip}`;
+    
+                const coords = await geocodeAddress(addressString);
+                
+                if (coords) {
+                    shelter.lat = coords.lat;
+                    shelter.lng = coords.lng;
+    
+                    console.log(`Geocoded ${shelter.name}: ${coords.lat}, ${coords.lng}`);
                 }
-
-                lineCount++;
+    
+                sheltersData.push(shelter);
             });
 
-            let addressString = `${shelter.address}, ${shelter.city}, ${shelter.state} ${shelter.zip}`;
-
-            const coords = await geocodeAddress(addressString);
-            
-            if (coords) {
-                shelter.lat = coords.lat;
-                shelter.lng = coords.lng;
-
-                console.log(`Geocoded ${shelter.name}: ${coords.lat}, ${coords.lng}`);
-            }
-
-            sheltersData.push(shelter);
-
-            sibling = sibling.nextElementSibling; // Move to the next sibling
         }
+        
         return sheltersData;
     } catch (error) {
         console.error('Error:', error);
@@ -120,7 +165,7 @@ function writeDataToFile(data) {
 async function processSheltersData() {
     try {
         // Use Promise.all to wait for all `getData` calls to complete
-        const allData = await Promise.all(TARGET_PAGES.map((pageUrl) => getData(pageUrl)));
+        const allData = await Promise.all(TARGET_PAGES.map((page) => getData(page)));
 
         // Flatten the results into a single array
         resultsJSON = allData.flat();
