@@ -12,3 +12,5 @@ Page URLs to parse are kept in an array.  Identifying formats is currently done 
 The addresses are then geocoded using Nominatim, the OpenStreetMap free geocoding service.
 
 The [Eaton Fire](https://www.fire.ca.gov/incidents/2025/1/7/eaton-fire) page was not included because the shelters included were already listed on the Palisades Fire page.  Ideally, the code would also be able to de-duplicate shelter locations between pages.
+
+The script uses a GitHub Action workflow to run every hour to keep the `shelters.json` file up to date.
