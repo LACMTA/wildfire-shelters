@@ -44,13 +44,5 @@
     "lat": 34.159501,
     "lng": -118.442297
   },
-  {
-    "name": "College of the Canyons East Gym",
-    "address": "26455 Rockwell Canyon Road",
-    "city": "Santa Clarita",
-    "state": "CA",
-    "zip": "91355",
-    "lat": 34.40816685641244,
-    "lng": -118.56791692248912
-  }
+  null
 ]
