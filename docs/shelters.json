@@ -4,7 +4,9 @@
     "address": "1350 South Sepulveda Boulevard",
     "city": "Los Angeles",
     "state": "CA",
-    "zip": "90025"
+    "zip": "90025",
+    "lat": 34.05291451020408,
+    "lng": -118.44864948979593
   },
   null
 ]
